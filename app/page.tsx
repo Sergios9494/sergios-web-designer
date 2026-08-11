@@ -167,7 +167,7 @@ export default function Home() {
         </h1>
         <div className="hero-stamp" aria-hidden="true"><span>S</span><small>EST.<br />2021</small></div>
         <div className="hero-marquee" aria-hidden="true">
-          <div><span>DESIGN — DEVELOP — RANK — AUTOMATE</span><b>✳</b><span>DESIGN — DEVELOP — RANK — AUTOMATE</span><b>✳</b><span>DESIGN — DEVELOP — RANK — AUTOMATE</span><b>✳</b></div>
+          <div><span>DESIGN — DEVELOP — RANK — AUTOMATE</span><b>✷</b><span>DESIGN — DEVELOP — RANK — AUTOMATE</span><b>✷</b><span>DESIGN — DEVELOP — RANK — AUTOMATE</span><b>✷</b></div>
         </div>
       </section>
 
@@ -233,7 +233,7 @@ export default function Home() {
         <a className="more-work-marquee" href="/work" aria-label="View all projects">
           <div className="more-work-track" aria-hidden="true">
             {archiveTrack.map((name, index) => (
-              <span key={`${name}-${index}`}>{name}<i>✳</i></span>
+              <span key={`${name}-${index}`}>{name}<i>✷</i></span>
             ))}
           </div>
         </a>
@@ -272,7 +272,7 @@ export default function Home() {
       />
 
       <section className="type-break" aria-label="Design philosophy">
-        <div className="type-track" aria-hidden="true"><span>DESIGN IT</span><i>✳</i><span>RANK IT</span><i>✳</i><span>AUTOMATE IT</span><i>✳</i></div>
+        <div className="type-track" aria-hidden="true"><span>DESIGN IT</span><i>✷</i><span>RANK IT</span><i>✷</i><span>AUTOMATE IT</span><i>✷</i></div>
         <p className="reveal">Great websites attract, convert and support customers.<br /><span className="philosophy-emphasis">Even while you sleep.</span></p>
       </section>
 

@@ -61,7 +61,7 @@ a{color:inherit;text-decoration:none}button{font:inherit;color:inherit}::selecti
   .hero{min-height:100svh;min-height:100dvh}
   .hero h1{max-width:100%}
   .hero-meta{font-size:11px;line-height:1.45}
-  /* Drop the decorative ✳ between marquee phrases on mobile — reads as clutter on a small screen; the gap alone separates the loop. */
+  /* Drop the decorative star between marquee phrases on mobile — reads as clutter on a small screen; the gap alone separates the loop. */
   .hero-marquee b{font-size:0;margin:0 22px}
   .type-track i{font-size:0;margin:0 28px}
   .contact-link .cta-arrow{font-size:.36em}
