@@ -80,6 +80,8 @@ a{color:inherit;text-decoration:none}button{font:inherit;color:inherit}::selecti
 
 @media(max-width:520px){
   .intro-poster{padding:16px}.intro-poster small{right:16px;bottom:16px}
+  /* Floor of clamp(88px,...) is wider than a phone, so "AUTOMATE" was clipped. */
+  .intro-poster>span{font-size:clamp(44px,15vw,82px)}
   .site-header{height:112px;grid-template-rows:60px 52px}
   .site-header nav{overflow:visible}
   .site-header nav a{font-size:8px;letter-spacing:-.02em;padding:6px 2px}
