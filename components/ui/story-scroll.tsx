@@ -116,6 +116,26 @@ const FlowArt: React.FC<FlowArtProps> = ({
               invalidateOnRefresh: true,
             }),
           );
+
+          // Once the NEXT section has fully covered this one, hide this
+          // section outright. Without this, on a real phone the two stacked
+          // full-height cards don't line up pixel-perfectly (iOS Safari's
+          // dynamic toolbar changes the viewport height), so the covered
+          // card peeks out below the top one — you end up seeing two
+          // "OPEN LIVE SITE" links and can tap the wrong one. Hiding removes
+          // both the visual peek and the stray tap target; scrolling back up
+          // restores it.
+          const next = sections[index + 1];
+          triggers.push(
+            ScrollTrigger.create({
+              trigger: next,
+              start: "top top",
+              end: "bottom top",
+              invalidateOnRefresh: true,
+              onEnter: () => gsap.set(section, { visibility: "hidden" }),
+              onLeaveBack: () => gsap.set(section, { visibility: "visible" }),
+            }),
+          );
         }
       });
 
