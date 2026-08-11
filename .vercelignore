@@ -1,0 +1,9 @@
+.openai
+.sites-runtime
+.wrangler
+build
+dist
+examples
+tests
+worker
+vite.config.ts
