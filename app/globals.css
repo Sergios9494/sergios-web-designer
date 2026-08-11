@@ -196,3 +196,45 @@ a{color:inherit;text-decoration:none}button{font:inherit;color:inherit}::selecti
 @media(prefers-reduced-motion:reduce){
   .all-work-art-link-label{transition:none!important}
 }
+
+/* ==========================================================================
+   Mobile fit fix (<=900px): the home project posters were built as full-screen
+   sticky boards with children pinned in vh units (top:13vh, bottom:21vh) inside
+   a dvh-sized box. On real phones vh (large viewport) > dvh (visible), so the
+   title/footer overflowed the fold and collided with the preview. Re-flow the
+   whole card into natural document order so nothing depends on viewport math.
+   ========================================================================== */
+@media(max-width:900px){
+  .project-poster{height:auto;overflow:visible}
+  .project-poster .poster-board{position:static;height:auto;min-height:0;overflow:hidden;display:flex;flex-direction:column;padding-bottom:0}
+  .project-poster.is-visible.crash-left .poster-board,
+  .project-poster.is-visible.crash-right .poster-board,
+  .project-poster.is-visible.crash-up .poster-board{animation:none}
+
+  .poster-topline{position:static;flex:0 0 52px;height:52px}
+
+  .poster-image,
+  .project-poster:nth-child(even) .poster-image{position:relative;left:auto;right:auto;top:auto;width:auto;height:auto;aspect-ratio:4/3;margin:20px var(--page-pad) 0;box-shadow:8px 8px 0 var(--ink);transform:none}
+  .project-poster:nth-child(even) .poster-image{box-shadow:-8px 8px 0 var(--ink)}
+
+  /* Oversized decorative index would blow out flow height; keep it out of mobile. */
+  .poster-index{display:none}
+
+  .poster-title,
+  .project-poster:nth-child(even) .poster-title{position:static;left:auto;right:auto;bottom:auto;margin:24px var(--page-pad) 0;text-align:left}
+  .poster-title p{font-size:11px;margin-bottom:10px}
+  .poster-title h3,
+  .project-poster:nth-child(even) .poster-title h3{font-size:14vw;line-height:.84;white-space:normal;overflow-wrap:anywhere;transform:none}
+
+  .poster-footer{position:static;margin-top:24px;min-height:0}
+
+  /* Whole card stays a single tap target that opens the case modal. */
+  .poster-hit{position:absolute;inset:0}
+}
+
+@media(max-width:520px){
+  .poster-image,
+  .project-poster:nth-child(even) .poster-image{aspect-ratio:5/4;margin-top:16px}
+  .poster-title h3,
+  .project-poster:nth-child(even) .poster-title h3{font-size:15.5vw;line-height:.82}
+}
