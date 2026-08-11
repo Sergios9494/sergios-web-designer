@@ -182,7 +182,7 @@ export default function Home() {
           <article
             className={`project-poster ${project.direction}`}
             key={project.title}
-            style={{ "--accent": project.accent } as CSSProperties}
+            style={{ "--accent": project.accent, ...(project.titleColor ? { "--title": project.titleColor } : {}) } as CSSProperties}
           >
             <div className="poster-board" data-cursor>
               <div className="poster-topline">
