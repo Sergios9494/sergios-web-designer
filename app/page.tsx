@@ -259,7 +259,7 @@ export default function Home() {
       <footer id="contact" className="contact">
         <div className="contact-top"><span>START A PROJECT / 2026</span><span>WEB / SEARCH / AUTOMATION</span></div>
         <a className="contact-link" href="mailto:svynarenkosergios@gmail.com">
-          <small>NEED A WEBSITE, SEO OR AI AUTOMATION?</small><span>LET&apos;S</span><span>{"WORK\u2197\uFE0E"}</span>
+          <small>NEED A WEBSITE, SEO OR AI AUTOMATION?</small><span>LET&apos;S</span><span>WORK<i className="cta-arrow">{"\u2197\uFE0E"}</i></span>
         </a>
         <div className="footer-row">
           <a className="footer-email" href="mailto:svynarenkosergios@gmail.com">SVYNARENKOSERGIOS@GMAIL.COM</a>
