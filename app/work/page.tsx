@@ -14,7 +14,7 @@ export default function AllWorkPage() {
       <section className="all-work-hero" aria-labelledby="all-work-title">
         <div className="all-work-kicker"><span>SELECTED DIGITAL WORK</span><span>2025—2026</span></div>
         <h1 id="all-work-title"><span>ALL</span><span>SITES</span></h1>
-        <p>Web design, development, e-commerce, SEO and AI integrations across nine selected projects.</p>
+        <p>Web design, development, e-commerce, SEO and AI integrations across different selected projects.</p>
       </section>
 
       <FlowArt className="all-work-flow" aria-label="All portfolio projects">
