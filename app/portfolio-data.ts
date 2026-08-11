@@ -14,7 +14,6 @@ export interface PortfolioProject {
   accent: string;
   direction: ProjectDirection;
   url?: string;
-  titleColor?: string;
 }
 
 export const portfolioProjects: PortfolioProject[] = [
@@ -45,7 +44,6 @@ export const portfolioProjects: PortfolioProject[] = [
     accent: "#f3eee4",
     direction: "crash-right",
     url: "https://nevermind-store-rho.vercel.app/",
-    titleColor: "#565c66",
   },
   {
     number: "03",
