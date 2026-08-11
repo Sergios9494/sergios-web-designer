@@ -8,7 +8,7 @@ export default function AllWorkPage() {
       <header className="all-work-header">
         <a className="brand" href="/" aria-label="Sergios, return to homepage">SERGIOS<span>®</span></a>
         <span>PORTFOLIO INDEX / 09</span>
-        <a className="all-work-home" href="/">BACK HOME ↖</a>
+        <a className="all-work-home" href="/">{"BACK HOME \u2196\uFE0E"}</a>
       </header>
 
       <section className="all-work-hero" aria-labelledby="all-work-title">
@@ -46,7 +46,7 @@ export default function AllWorkPage() {
                     loading="lazy"
                     tabIndex={-1}
                   />
-                  <span className="all-work-art-link-label" aria-hidden="true">VIEW LIVE ↗</span>
+                  <span className="all-work-art-link-label" aria-hidden="true">{"VIEW LIVE \u2197\uFE0E"}</span>
                 </a>
               ) : (
                 <div className={`all-work-art${project.image ? "" : " all-work-art-placeholder"}`}>
@@ -63,7 +63,7 @@ export default function AllWorkPage() {
                 <ul>{project.roles.map((role) => <li key={role}>{role}</li>)}</ul>
                 <p>{project.summary}</p>
                 {project.url ? (
-                  <a href={project.url} target="_blank" rel="noreferrer">OPEN LIVE SITE ↗</a>
+                  <a href={project.url} target="_blank" rel="noreferrer">{"OPEN LIVE SITE \u2197\uFE0E"}</a>
                 ) : (
                   <span>CASE STUDY / LINK READY</span>
                 )}
@@ -75,7 +75,7 @@ export default function AllWorkPage() {
 
       <footer className="all-work-footer">
         <a href="mailto:svynarenkosergios@gmail.com">SVYNARENKOSERGIOS@GMAIL.COM</a>
-        <a href="#top">BACK TO TOP ↑</a>
+        <a href="#top">{"BACK TO TOP \u2191\uFE0E"}</a>
         <span>© 2026 SERGIOS®</span>
       </footer>
     </main>

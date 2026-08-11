@@ -146,8 +146,8 @@ export default function Home() {
         <nav aria-label="Primary navigation">
           <a href="#work">WORK</a>
           <a href="#about">INFO</a>
-          <a href="#contact">CONTACT ↘</a>
-          <a className="all-work-button" href="/work">ALL SITES ↗</a>
+          <a href="#contact">{"CONTACT \u2198\uFE0E"}</a>
+          <a className="all-work-button" href="/work">{"ALL SITES \u2197\uFE0E"}</a>
         </nav>
       </header>
 
@@ -155,7 +155,7 @@ export default function Home() {
         <div className="hero-meta">
           <span>INDEPENDENT DIGITAL CREATIVE<br />FOR AMBITIOUS BRANDS</span>
           <span>WEB DESIGN + DEVELOPMENT<br />SEO + AI AGENTS</span>
-          <span>BUILD. RANK. AUTOMATE.<br />SCROLL TO EXPLORE ↓</span>
+          <span>BUILD. RANK. AUTOMATE.<br />{"SCROLL TO EXPLORE \u2193\uFE0E"}</span>
         </div>
         <h1 id="hero-title">
           <span className="hero-word word-one">WEB</span>
@@ -215,7 +215,7 @@ export default function Home() {
               <div className="poster-footer">
                 <ul>{project.roles.map((role) => <li key={role}>{role}</li>)}</ul>
                 <p>{project.summary}</p>
-                <span>{project.url ? "VIEW LIVE SITE ↗" : "VIEW CASE ↗"}</span>
+                <span>{project.url ? "VIEW LIVE SITE \u2197\uFE0E" : "VIEW CASE \u2197\uFE0E"}</span>
               </div>
               <button className="poster-hit" type="button" onClick={() => setActiveProject(index)} aria-label={`Open ${project.title} project`} />
             </div>
@@ -239,7 +239,7 @@ export default function Home() {
         <div className="services-list">
           {services.map(([number, title, description]) => (
             <div className="service-row reveal" key={number}>
-              <span>[{number}]</span><h3>{title}</h3><p>{description}</p><i>↗</i>
+              <span>[{number}]</span><h3>{title}</h3><p>{description}</p><i>{"\u2197\uFE0E"}</i>
             </div>
           ))}
         </div>
@@ -259,11 +259,11 @@ export default function Home() {
       <footer id="contact" className="contact">
         <div className="contact-top"><span>START A PROJECT / 2026</span><span>WEB / SEARCH / AUTOMATION</span></div>
         <a className="contact-link" href="mailto:svynarenkosergios@gmail.com">
-          <small>NEED A WEBSITE, SEO OR AI AUTOMATION?</small><span>LET&apos;S</span><span>WORK↗</span>
+          <small>NEED A WEBSITE, SEO OR AI AUTOMATION?</small><span>LET&apos;S</span><span>{"WORK\u2197\uFE0E"}</span>
         </a>
         <div className="footer-row">
           <a className="footer-email" href="mailto:svynarenkosergios@gmail.com">SVYNARENKOSERGIOS@GMAIL.COM</a>
-          <a className="footer-back" href="#top">BACK TO TOP ↑</a>
+          <a className="footer-back" href="#top">{"BACK TO TOP \u2191\uFE0E"}</a>
           <span className="footer-year">© 2026 SERGIOS®</span>
         </div>
       </footer>
@@ -287,7 +287,7 @@ export default function Home() {
             <h2 id="case-title">{selectedProject.title}</h2>
             <p>{selectedProject.detail}</p>
             <ul>{selectedProject.roles.map((role) => <li key={role}>[{role}]</li>)}</ul>
-            {selectedProject.url && <a className="case-live-link" href={selectedProject.url} target="_blank" rel="noreferrer">OPEN LIVE WEBSITE ↗</a>}
+            {selectedProject.url && <a className="case-live-link" href={selectedProject.url} target="_blank" rel="noreferrer">{"OPEN LIVE WEBSITE \u2197\uFE0E"}</a>}
           </div>
         </div>
       )}
