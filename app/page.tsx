@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { TestimonialsSection, type Testimonial } from "../components/ui/testimonials-with-marquee";
-import { featuredProjects } from "./portfolio-data";
+import { featuredProjects, portfolioProjects } from "./portfolio-data";
 
 const services = [
   ["01", "Web design", "Distinctive responsive interfaces built around your brand, audience and business goals."],
@@ -128,6 +128,8 @@ export default function Home() {
   }, [activeProject]);
 
   const selectedProject = activeProject === null ? null : featuredProjects[activeProject];
+  const archiveNames = portfolioProjects.map((project) => project.title.toUpperCase());
+  const archiveTrack = [...archiveNames, ...archiveNames];
 
   return (
     <main id="top">
@@ -224,8 +226,21 @@ export default function Home() {
       </section>
 
       <section className="more-work" aria-label="See all projects">
-        <span className="more-work-label">THE FULL ARCHIVE</span>
-        <a className="more-work-button" href="/work">{"VIEW ALL PROJECTS \u2197\uFE0E"}</a>
+        <div className="more-work-top">
+          <span>THE FULL ARCHIVE</span>
+          <span>EVERY BUILD, ONE PLACE</span>
+        </div>
+        <a className="more-work-marquee" href="/work" aria-label="View all projects">
+          <div className="more-work-track" aria-hidden="true">
+            {archiveTrack.map((name, index) => (
+              <span key={`${name}-${index}`}>{name}<i>✳</i></span>
+            ))}
+          </div>
+        </a>
+        <div className="more-work-foot">
+          <span>DESIGN · DEVELOP · RANK · AUTOMATE</span>
+          <a className="more-work-button" href="/work">{"VIEW ALL PROJECTS \u2197\uFE0E"}</a>
+        </div>
       </section>
 
       <section id="about" className="manifesto">
