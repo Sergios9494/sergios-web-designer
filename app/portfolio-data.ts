@@ -45,7 +45,7 @@ export const portfolioProjects: PortfolioProject[] = [
     accent: "#f3eee4",
     direction: "crash-right",
     url: "https://nevermind-store-rho.vercel.app/",
-    titleColor: "#6f7680",
+    titleColor: "#565c66",
   },
   {
     number: "03",
