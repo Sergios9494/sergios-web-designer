@@ -223,6 +223,14 @@ export default function Home() {
         ))}
       </section>
 
+      <section className="more-work" aria-label="See all projects">
+        <div className="more-work-index"><span>SELECTED / 05</span><span>ARCHIVE / 09</span></div>
+        <div className="more-work-body">
+          <h2 className="reveal">SEEN FIVE.<br /><em>SEE ALL NINE.</em></h2>
+          <a className="more-work-button" href="/work">{"VIEW ALL PROJECTS \u2197\uFE0E"}</a>
+        </div>
+      </section>
+
       <section id="about" className="manifesto">
         <div className="manifesto-label reveal"><span>ABOUT / SERGIOS</span><span>[ THIS IS THE POINT OF VIEW ]</span></div>
         <h2 className="reveal">MORE<br />THAN A<br /><em>WEBSITE.</em></h2>
