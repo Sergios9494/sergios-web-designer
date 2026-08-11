@@ -12,7 +12,7 @@ export default function AllWorkPage() {
       </header>
 
       <section className="all-work-hero" aria-labelledby="all-work-title">
-        <div className="all-work-kicker"><span>SELECTED DIGITAL WORK</span><span>2025—2026</span></div>
+        <div className="all-work-kicker"><span>SELECTED DIGITAL WORK</span></div>
         <h1 id="all-work-title"><span>ALL</span><span>SITES</span></h1>
         <p>Web design, development, e-commerce, SEO and AI integrations across different selected projects.</p>
       </section>
