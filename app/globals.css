@@ -246,6 +246,40 @@ a{color:inherit;text-decoration:none}button{font:inherit;color:inherit}::selecti
 
   /* Whole card stays a single tap target that opens the case modal. */
   .poster-hit{position:absolute;inset:0}
+
+  /* Touch has no hover or pinned-scroll parallax, so give each card a
+     directional entrance as it scrolls into view — echoes the desktop
+     "crash" reveal without the sticky pin. Transform/opacity only. */
+  .project-poster .poster-topline,
+  .project-poster .poster-title,
+  .project-poster .poster-footer,
+  .project-poster .poster-image{opacity:0;transition:opacity .55s ease,transform .7s cubic-bezier(.16,1,.3,1)}
+  .project-poster .poster-topline{transform:translateY(18px)}
+  .project-poster .poster-title{transform:translateY(26px)}
+  .project-poster .poster-footer{transform:translateY(26px)}
+  .project-poster.crash-left .poster-image{transform:translate3d(-34px,22px,0)}
+  .project-poster.crash-right .poster-image{transform:translate3d(34px,22px,0)}
+  .project-poster.crash-up .poster-image{transform:translate3d(0,40px,0)}
+
+  .project-poster.is-visible .poster-topline{transition-delay:.05s}
+  .project-poster.is-visible .poster-image{transition-delay:.12s}
+  .project-poster.is-visible .poster-title{transition-delay:.22s}
+  .project-poster.is-visible .poster-footer{transition-delay:.3s}
+  .project-poster.is-visible .poster-topline,
+  .project-poster.is-visible .poster-title,
+  .project-poster.is-visible .poster-footer,
+  .project-poster.is-visible .poster-image{opacity:1;transform:none}
+
+  /* Tactile press feedback when tapping a card to open its case. */
+  .poster-board{transition:transform .3s cubic-bezier(.16,1,.3,1)}
+  .poster-board:has(.poster-hit:active){transform:scale(.985)}
+}
+
+@media(max-width:900px) and (prefers-reduced-motion:reduce){
+  .project-poster .poster-topline,
+  .project-poster .poster-title,
+  .project-poster .poster-footer,
+  .project-poster .poster-image{opacity:1;transform:none;transition:none}
 }
 
 @media(max-width:520px){
