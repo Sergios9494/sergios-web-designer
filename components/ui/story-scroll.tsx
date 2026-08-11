@@ -56,19 +56,36 @@ const FlowArt: React.FC<FlowArtProps> = ({
   "aria-label": ariaLabel = "Story scroll",
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [reducedMotion, setReducedMotion] = useState(false);
+  // The pinned rotate-in stacking effect overlaps sections on small
+  // screens, leaving two projects' links tappable at the same spot.
+  // Disable it on narrow viewports (and for reduced-motion) so the
+  // sections fall back to a clean vertical stack. Initialised on the
+  // first client render so the pins are never created on mobile — a
+  // later setState can't undo pin styles that were already applied.
+  const [disableFlow, setDisableFlow] = useState(() => {
+    if (typeof window === "undefined") return false;
+    return (
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
+      window.matchMedia("(max-width: 900px)").matches
+    );
+  });
 
   useEffect(() => {
-    const media = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const update = () => setReducedMotion(media.matches);
+    const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const small = window.matchMedia("(max-width: 900px)");
+    const update = () => setDisableFlow(motion.matches || small.matches);
     update();
-    media.addEventListener("change", update);
-    return () => media.removeEventListener("change", update);
+    motion.addEventListener("change", update);
+    small.addEventListener("change", update);
+    return () => {
+      motion.removeEventListener("change", update);
+      small.removeEventListener("change", update);
+    };
   }, []);
 
   useGSAP(
     () => {
-      if (!containerRef.current || reducedMotion) return;
+      if (!containerRef.current || disableFlow) return;
 
       const sections = Array.from(
         containerRef.current.querySelectorAll<HTMLElement>("[data-flow-section]"),
@@ -119,7 +136,7 @@ const FlowArt: React.FC<FlowArtProps> = ({
         triggers.forEach((trigger) => trigger.kill());
       };
     },
-    { scope: containerRef, dependencies: [childCount(children), reducedMotion] },
+    { scope: containerRef, dependencies: [childCount(children), disableFlow] },
   );
 
   return (
