@@ -56,36 +56,19 @@ const FlowArt: React.FC<FlowArtProps> = ({
   "aria-label": ariaLabel = "Story scroll",
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
-  // The pinned rotate-in stacking effect overlaps sections on small
-  // screens, leaving two projects' links tappable at the same spot.
-  // Disable it on narrow viewports (and for reduced-motion) so the
-  // sections fall back to a clean vertical stack. Initialised on the
-  // first client render so the pins are never created on mobile — a
-  // later setState can't undo pin styles that were already applied.
-  const [disableFlow, setDisableFlow] = useState(() => {
-    if (typeof window === "undefined") return false;
-    return (
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
-      window.matchMedia("(max-width: 900px)").matches
-    );
-  });
+  const [reducedMotion, setReducedMotion] = useState(false);
 
   useEffect(() => {
-    const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const small = window.matchMedia("(max-width: 900px)");
-    const update = () => setDisableFlow(motion.matches || small.matches);
+    const media = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const update = () => setReducedMotion(media.matches);
     update();
-    motion.addEventListener("change", update);
-    small.addEventListener("change", update);
-    return () => {
-      motion.removeEventListener("change", update);
-      small.removeEventListener("change", update);
-    };
+    media.addEventListener("change", update);
+    return () => media.removeEventListener("change", update);
   }, []);
 
   useGSAP(
     () => {
-      if (!containerRef.current || disableFlow) return;
+      if (!containerRef.current || reducedMotion) return;
 
       const sections = Array.from(
         containerRef.current.querySelectorAll<HTMLElement>("[data-flow-section]"),
@@ -100,7 +83,13 @@ const FlowArt: React.FC<FlowArtProps> = ({
         const inner = section.querySelector<HTMLElement>(".flow-art-container");
         if (!inner) return;
 
-        if (index > 0) {
+        // The last section has no trailing scroll to finish its rotate-in,
+        // so it would stay tilted and reveal the section behind it (two
+        // overlapping cards / duplicate links). Let it arrive flat and
+        // cover the previous card cleanly; every earlier transition keeps
+        // the tilt-in reveal.
+        const isLast = index === sections.length - 1;
+        if (index > 0 && !isLast) {
           gsap.set(inner, { rotation: 30, transformOrigin: "bottom left" });
           const tween = gsap.to(inner, {
             rotation: 0,
@@ -136,7 +125,7 @@ const FlowArt: React.FC<FlowArtProps> = ({
         triggers.forEach((trigger) => trigger.kill());
       };
     },
-    { scope: containerRef, dependencies: [childCount(children), disableFlow] },
+    { scope: containerRef, dependencies: [childCount(children), reducedMotion] },
   );
 
   return (
