@@ -21,6 +21,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        {/* Start every reload at the top instead of restoring the previous
+            scroll position (still honours #anchor links). */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: "if('scrollRestoration' in history){history.scrollRestoration='manual';}",
+          }}
+        />
+      </head>
       <body>{children}</body>
     </html>
   );
